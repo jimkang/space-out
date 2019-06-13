@@ -11,8 +11,6 @@ var currentlyPlayingSection = document.getElementById(
   'currently-playing-sound'
 );
 
-soundPlayer.volume = 1.0;
-
 function scheduleSpaceAudio({ random }) {
   registerSingleListener({
     element: soundPlayer,
@@ -71,6 +69,8 @@ function scheduleSpaceAudio({ random }) {
     }
     var pack = audioPacks.shift();
     soundPlayer.src = pack.url;
+    soundPlayer.volume = 0.8;
+
     soundPlayer.play();
     currentlyPlayingSection.classList.remove('hidden');
     soundLink.href = pack.detailsURL;

@@ -29,7 +29,7 @@ function scheduleMusic({ spotifyPlayer, spotifyToken, probable }) {
   var q = queue(1);
   q.defer(spotifyPlayer.stop);
   // The SDK seems to default to 100% volume.
-  q.defer(spotifyPlayer.setVolume, 0.1);
+  q.defer(spotifyPlayer.setVolume, 0.2);
   q.defer(playCollection, {
     spotifyToken,
     uri: collection,
