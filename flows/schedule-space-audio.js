@@ -1,25 +1,29 @@
 var randomIA = require('random-internet-archive');
 var handleError = require('handle-error-web');
 var request = require('basic-browser-request');
+var registerSingleListener = require('../register-single-listener');
 var sb = require('standard-bail')();
 
 var soundPlayer = document.getElementById('sound-player');
 var soundLink = document.getElementById('sound-link');
+var nextSound = document.getElementById('next-sound');
 var currentlyPlayingSection = document.getElementById(
   'currently-playing-sound'
 );
 
-soundPlayer.volume = 0.7;
-
-var oldEndedListener;
+soundPlayer.volume = 1.0;
 
 function scheduleSpaceAudio({ random }) {
-  if (oldEndedListener) {
-    soundPlayer.removeEventListener(oldEndedListener);
-  }
-  var endedListener = playNextIfPossible;
-  soundPlayer.addEventListener('ended', endedListener);
-  oldEndedListener = endedListener;
+  registerSingleListener({
+    element: soundPlayer,
+    eventName: 'ended',
+    listener: playNextIfPossible
+  });
+  registerSingleListener({
+    element: nextSound,
+    eventName: 'click',
+    listener: playNext
+  });
 
   var audioPacks = [];
 
@@ -50,11 +54,19 @@ function scheduleSpaceAudio({ random }) {
     function addToAudioPacks(audioPack) {
       audioPacks.push(audioPack);
       playNextIfPossible();
+      done();
     }
   }
 
   function playNextIfPossible() {
-    if (!soundPlayer.paused || audioPacks.length < 1) {
+    if (!soundPlayer.paused) {
+      return;
+    }
+    playNext();
+  }
+
+  function playNext() {
+    if (audioPacks.length < 1) {
       return;
     }
     var pack = audioPacks.shift();
@@ -65,7 +77,7 @@ function scheduleSpaceAudio({ random }) {
     soundLink.textContent = pack.title;
     console.log('Just played. Current queue:', audioPacks);
     // Replenish the queue.
-    getNextAudio(handleError);
+    getAudioQueueToSize(10);
   }
 }
 
