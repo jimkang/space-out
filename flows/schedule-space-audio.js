@@ -12,7 +12,7 @@ var currentlyPlayingSection = document.getElementById(
 );
 
 function scheduleSpaceAudio({ random }) {
-  // This is important, as the sound can't change unless things are stopeed.
+  // This is important, as the sound can't change unless things are stopped.
   soundPlayer.pause();
 
   registerSingleListener({

@@ -2,6 +2,7 @@ var seedrandom = require('seedrandom');
 var Probable = require('probable').createProbable;
 var scheduleMusic = require('./schedule-music');
 var scheduleSpaceAudio = require('./schedule-space-audio');
+var scheduleSpaceImages = require('./schedule-space-images');
 var registerSingleListener = require('../register-single-listener');
 var callNextTick = require('call-next-tick');
 
@@ -44,6 +45,7 @@ function playFlow({
       scheduleMusic({ probable, spotifyPlayer, spotifyToken });
     }
     scheduleSpaceAudio({ random });
+    scheduleSpaceImages({ probable });
     startButton.classList.add('hidden');
   }
 
