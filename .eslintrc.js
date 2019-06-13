@@ -11,5 +11,8 @@ module.exports = {
     quotes: ['error', 'single', { avoidEscape: true }],
     semi: ['error', 'always'],
     'no-console': 'off'
+  },
+  parserOptions: {
+    ecmaVersion: 2018
   }
 };

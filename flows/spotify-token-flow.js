@@ -11,6 +11,8 @@ const playerName = 'Space out web player';
 
 function spotifyTokenFlow(routeDict, routeState) {
   var { access_token, state, seed } = routeDict;
+  var gotPlayerReadyEvent = false;
+
   if (state) {
     var thawedDict = unpackRoute(state);
     thawedDict.access_token = access_token;
@@ -41,7 +43,12 @@ function spotifyTokenFlow(routeDict, routeState) {
         )
       );
     }
-    playFlow({ seed, spotifyPlayer, spotifyToken: access_token });
+    if (gotPlayerReadyEvent) {
+      return;
+    }
+
+    gotPlayerReadyEvent = true;
+    playFlow({ seed, spotifyPlayer, spotifyToken: access_token, routeState });
   }
 }
 

@@ -31,6 +31,7 @@
     "basic-browser-request": "^9.0.2",
     "collect-in-channel": "^3.1.0",
     "d3-queue": "^3.0.7",
+    "errorback-promise": "^1.0.0",
     "handle-error-web": "^1.0.1",
     "lodash.curry": "^4.1.1",
     "lodash.pluck": "^3.1.2",

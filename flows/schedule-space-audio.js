@@ -12,6 +12,9 @@ var currentlyPlayingSection = document.getElementById(
 );
 
 function scheduleSpaceAudio({ random }) {
+  // This is important, as the sound can't change unless things are stopeed.
+  soundPlayer.pause();
+
   registerSingleListener({
     element: soundPlayer,
     eventName: 'ended',
@@ -63,7 +66,7 @@ function scheduleSpaceAudio({ random }) {
     playNext();
   }
 
-  function playNext() {
+  async function playNext() {
     if (audioPacks.length < 1) {
       return;
     }

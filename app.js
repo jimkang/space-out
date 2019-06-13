@@ -26,7 +26,7 @@ function followRoute(routeDict) {
     spotifyTokenFlow(routeDict, routeState);
     return;
   } else if (skipMusic === 'yes') {
-    playFlow({ seed });
+    playFlow({ seed, routeState });
   } else {
     askToLoginFlow({ routeState, routeDict });
   }
