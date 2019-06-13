@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Space. Out.</title>
+    <link rel="stylesheet" href="app.css" />
+  </head>
+  <body>
+    <div id="version-info"></div>
+
+    <h1 class="main-title">Space. Out.</h1>
+    <h5 class="subtitle"></h5>
+
+    <div id="status-message" class="hidden"></div>
+
+    <section id="login-section" class="hidden">
+      <button id="log-in-button">
+        Connect to Spotify to start the space music.
+      </button>
+      <button id="skip-music-button">
+        Skip the music part.
+      </button>
+    </section>
+
+    <section id="controls-section" class="hidden">
+      <button id="start-button">Start your voyage.</button>
+    </section>
+
+    <section id="playlist-section" class="hidden"></section>
+
+    <audio id="speech-player" class="hidden"></audio>
+    <audio id="sound-player" class="hidden"></audio>
+
+    <script src="index.js"></script>
+  </body>
+</html>
