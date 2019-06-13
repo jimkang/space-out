@@ -45,7 +45,14 @@ function setUpWebPlayer(
 
   function onPlayerReady({ device_id }) {
     console.log('SDK player is ready with Device ID', device_id);
-    done(null, { deviceId: device_id, sdkPlayer: player, setVolume, stop });
+    done(null, {
+      deviceId: device_id,
+      sdkPlayer: player,
+      setVolume,
+      stop,
+      next,
+      getCurrentState
+    });
   }
 
   function setVolume(volume, done) {
@@ -59,6 +66,20 @@ function setUpWebPlayer(
     player
       .pause()
       .then(() => done())
+      .catch(done);
+  }
+
+  function next(done) {
+    player
+      .nextTrack()
+      .then(() => done())
+      .catch(done);
+  }
+
+  function getCurrentState(done) {
+    player
+      .getCurrentState()
+      .then(state => done(null, state))
       .catch(done);
   }
 }

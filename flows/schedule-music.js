@@ -3,6 +3,17 @@ var getTracksFromPlaylist = require('../tasks/get-tracks-from-playlist');
 var getTracksFromAlbum = require('../tasks/get-tracks-from-album');
 var handleError = require('handle-error-web');
 var queue = require('d3-queue').queue;
+var registerSingleListener = require('../register-single-listener');
+var SpotifyResolve = require('spotify-resolve');
+var request = require('basic-browser-request');
+var sb = require('standard-bail')();
+
+var trackLink = document.getElementById('track-link');
+var collectionLink = document.getElementById('collection-link');
+var nextSong = document.getElementById('next-song');
+var currentlyPlayingMusicSection = document.getElementById(
+  'currently-playing-music'
+);
 
 var ambientCollections = [
   'spotify:playlist:37i9dQZF1DX1n9whBbBKoL',
@@ -20,7 +31,16 @@ var ambientCollections = [
 ];
 
 function scheduleMusic({ spotifyPlayer, spotifyToken, probable }) {
+  registerSingleListener({
+    element: nextSong,
+    eventName: 'click',
+    listener: playNext
+  });
+  var spResolve = SpotifyResolve({ bearerToken: spotifyToken, request });
+
   var collection = probable.pick(ambientCollections);
+  var collectionName;
+
   var getTracks = getTracksFromPlaylist;
   if (collection.startsWith('spotify:album:')) {
     getTracks = getTracksFromAlbum;
@@ -30,6 +50,8 @@ function scheduleMusic({ spotifyPlayer, spotifyToken, probable }) {
   q.defer(spotifyPlayer.stop);
   // The SDK seems to default to 100% volume.
   q.defer(spotifyPlayer.setVolume, 0.2);
+  q.defer(registerPlayerListener);
+  q.defer(resolveCollection, collection);
   q.defer(playCollection, {
     spotifyToken,
     uri: collection,
@@ -39,7 +61,43 @@ function scheduleMusic({ spotifyPlayer, spotifyToken, probable }) {
   });
   q.awaitAll(handleError);
 
+  currentlyPlayingMusicSection.classList.remove('hidden');
+
   // TODO: Reschedule at end of play.
+  function playNext() {
+    spotifyPlayer.next(handleError);
+  }
+
+  function registerPlayerListener(done) {
+    spotifyPlayer.sdkPlayer.addListener(
+      'player_state_changed',
+      onPlayerStateChanged
+    );
+    setTimeout(done, 0);
+  }
+
+  function onPlayerStateChanged({ track_window }) {
+    var track = track_window.current_track;
+    if (track) {
+      trackLink.href = track.uri;
+      trackLink.textContent = `${track.name} by ${track.artists[0].name}`;
+    }
+  }
+
+  function resolveCollection(uri, done) {
+    spResolve(uri, sb(saveCollectionDetails, handleError));
+
+    function saveCollectionDetails(collectionObject) {
+      collectionName = collectionObject.name;
+      renderCollectionDetails();
+      done();
+    }
+  }
+
+  function renderCollectionDetails() {
+    collectionLink.href = collection;
+    collectionLink.textContent = collectionName;
+  }
 }
 
 module.exports = scheduleMusic;
