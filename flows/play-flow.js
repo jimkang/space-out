@@ -1,6 +1,7 @@
 var seedrandom = require('seedrandom');
 var Probable = require('probable').createProbable;
 var scheduleMusic = require('./schedule-music');
+var scheduleSpaceAudio = require('./schedule-space-audio');
 
 var controlsSection = document.getElementById('controls-section');
 var startButton = document.getElementById('start-button');
@@ -8,9 +9,11 @@ var startButton = document.getElementById('start-button');
 var oldStartListener;
 
 function playFlow({ seed, spotifyToken, spotifyPlayer }) {
-  var probable = Probable({ random: seedrandom(seed) });
+  var random = seedrandom(seed);
+  var probable = Probable({ random });
   initListeners();
   controlsSection.classList.remove('hidden');
+  startButton.classList.remove('hidden');
 
   function initListeners() {
     if (oldStartListener) {
@@ -25,6 +28,8 @@ function playFlow({ seed, spotifyToken, spotifyPlayer }) {
     if (spotifyPlayer) {
       scheduleMusic({ probable, spotifyPlayer, spotifyToken });
     }
+    scheduleSpaceAudio({ random });
+    startButton.classList.add('hidden');
   }
 }
 
