@@ -25,9 +25,12 @@ var ambientCollections = [
   'spotify:playlist:2xzvhh7pEpGPJOLSE3FcTo',
   'spotify:album:122nddDJoOZdq3KTM6E77I',
   'spotify:album:3zQQtu3a9Y7ZEDAKcftznw',
-  'spotify:album:2HB2ul11B48chK3PV7S4KS'
+  'spotify:album:2HB2ul11B48chK3PV7S4KS',
   //'spotify:album:15YBAf362L60KpbrSjduRY',
   //'spotify:album:7M2EhhKnJYcmluPNzmB35N'
+  'spotify:album:6ROeoiTdZBO7N5C8gC2xix',
+  'spotify:album:6NkuCdMz5tGmHbOXAWbtCW',
+  'spotify:playlist:37i9dQZF1DXbIeCFU20wRm'
 ];
 
 function scheduleMusic({ spotifyPlayer, spotifyToken, probable }) {
