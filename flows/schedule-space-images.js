@@ -5,10 +5,13 @@ var squarifyBoard = require('../squarify-board');
 var d3 = require('d3-selection');
 require('d3-transition');
 
-squarifyBoard();
-
 const imageInterval = 20000; // 30000;
 const transitionDuration = 5000;
+
+squarifyBoard();
+
+var imageLink = d3.select('#image-link');
+var currentImageSection = d3.select('#current-image');
 
 var keywordTable = [
   [1, 'Orion'],
@@ -52,7 +55,15 @@ async function scheduleSpaceImages({ probable }) {
         if (collectionR.error) {
           handleError(collectionR.error);
         } else {
-          renderImage(getBestImage(collectionR.body));
+          renderImage({
+            imageURL: getBestImage(collectionR.body),
+            name: getAtPath(item, ['data', '0', 'title']),
+            detailsURL: `https://images.nasa.gov/details-${getAtPath(item, [
+              'data',
+              '0',
+              'nasa_id'
+            ])}.html`
+          });
         }
       }
     }
@@ -76,7 +87,7 @@ function getBestImage(images) {
   return url;
 }
 
-function renderImage(imageURL) {
+function renderImage({ name, imageURL, detailsURL }) {
   var imageToShow;
   var imageToHide;
   if (+overImage.attr('opacity') === 0) {
@@ -96,6 +107,10 @@ function renderImage(imageURL) {
     .transition()
     .duration(transitionDuration)
     .attr('opacity', 0.0);
+
+  currentImageSection.classed('hidden', false);
+
+  imageLink.attr('href', detailsURL).text(name);
 }
 
 module.exports = scheduleSpaceImages;
