@@ -17,7 +17,7 @@ var routeState = RouteState({
 })();
 
 function followRoute(routeDict) {
-  var { access_token, state, seed, skipMusic } = routeDict;
+  var { access_token, state, seed, skipMusic, firstAudioURL } = routeDict;
   if (!seed) {
     seedWithDate();
     return;
@@ -26,7 +26,7 @@ function followRoute(routeDict) {
     spotifyTokenFlow(routeDict, routeState);
     return;
   } else if (skipMusic === 'yes') {
-    playFlow({ seed, routeState });
+    playFlow({ seed, routeState, firstAudioURL });
   } else {
     askToLoginFlow({ routeState, routeDict });
   }

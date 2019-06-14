@@ -11,7 +11,7 @@ var currentlyPlayingSection = document.getElementById(
   'currently-playing-sound'
 );
 
-function scheduleSpaceAudio({ random }) {
+function scheduleSpaceAudio({ random, firstAudioURL }) {
   // This is important, as the sound can't change unless things are stopped.
   soundPlayer.pause();
 
@@ -27,6 +27,9 @@ function scheduleSpaceAudio({ random }) {
   });
 
   var audioPacks = [];
+  if (firstAudioURL) {
+    audioPacks.push({ url: firstAudioURL });
+  }
 
   getAudioQueueToSize(10);
 

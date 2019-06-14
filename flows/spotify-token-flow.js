@@ -48,7 +48,13 @@ function spotifyTokenFlow(routeDict, routeState) {
     }
 
     gotPlayerReadyEvent = true;
-    playFlow({ seed, spotifyPlayer, spotifyToken: access_token, routeState });
+    playFlow({
+      seed,
+      spotifyPlayer,
+      spotifyToken: access_token,
+      routeState,
+      firstAudioURL: routeDict.firstAudioURL
+    });
   }
 }
 

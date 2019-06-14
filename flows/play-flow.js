@@ -16,7 +16,8 @@ function playFlow({
   spotifyToken,
   spotifyPlayer,
   routeState,
-  startPlaying
+  startPlaying,
+  firstAudioURL
 }) {
   var random = seedrandom(seed);
   var probable = Probable({ random });
@@ -44,7 +45,7 @@ function playFlow({
     if (spotifyPlayer) {
       scheduleMusic({ probable, spotifyPlayer, spotifyToken });
     }
-    scheduleSpaceAudio({ random });
+    scheduleSpaceAudio({ random, firstAudioURL });
     scheduleSpaceImages({ probable });
     startButton.classList.add('hidden');
   }
