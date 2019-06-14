@@ -5,40 +5,62 @@
     <link rel="stylesheet" href="app.css" />
   </head>
   <body>
-    <div id="version-info"></div>
-
-    <h1 class="main-title">Space. Out.</h1>
-    <h5 class="subtitle"></h5>
-
-    <div id="status-message" class="hidden"></div>
-
-    <section id="login-section" class="hidden">
-      <button id="log-in-button">
-        Connect to Spotify to start the space music.
-      </button>
-      <button id="skip-music-button">
-        Skip the music part.
-      </button>
-    </section>
-
-    <section id="controls-section" class="hidden">
-      <button id="start-button">Start voyage.</button>
-      <div id="currently-playing-sound" class="hidden">
-        <a id="sound-link" target="_blank"></a>
-        <button id="next-sound">Next NASA sound</button>
-      </div>
-      <div id="currently-playing-music" class="hidden">
-        <a id="track-link" target="_blank"></a>
-        <a id="collection-link" target="_blank"></a>
-        <button id="next-song">Next song</button>
-      </div>
-      <button id="restart-button" class="hidden">New voyage.</button>
-    </section>
-
     <svg id="board" width="100%" viewBox="0 0 100 100">
-      <image id="under-image" width="100" height="100" opacity="0"></image>
-      <image id="over-image" width="100" height="100" opacity="1"></image>
+      <image
+        id="under-image"
+        width="100"
+        height="100"
+        opacity="0"
+        preserveAspectRatio="xMaxYMin"
+      ></image>
+      <image
+        id="over-image"
+        width="100"
+        height="100"
+        opacity="1"
+        preserveAspectRatio="xMaxYMin"
+      ></image>
     </svg>
+    <section id="foreground">
+      <div id="version-info"></div>
+
+      <h1 class="main-title">Space. Out.</h1>
+      <h5 class="subtitle"></h5>
+
+      <div id="status-message" class="hidden"></div>
+
+      <section id="login-section" class="hidden">
+        <button id="log-in-button">
+          Connect to Spotify to start the space music.
+        </button>
+        <button id="skip-music-button">
+          Skip the music part.
+        </button>
+      </section>
+
+      <section id="controls-section" class="hidden">
+        <button id="start-button">Start voyage.</button>
+        <div id="currently-playing-sound" class="hidden currently-playing-info">
+          <div class="currently-playing-label">
+            Sound: <a id="sound-link" target="_blank"></a>
+          </div>
+          <button id="next-sound">Next NASA sound</button>
+        </div>
+        <div id="currently-playing-music" class="hidden currently-playing-info">
+          <div class="currently-playing-label">
+            Music: <a id="track-link" target="_blank"></a> from
+            <a id="collection-link" target="_blank"></a>
+          </div>
+          <button id="next-song">Next song</button>
+        </div>
+        <button id="restart-button" class="hidden">New voyage.</button>
+      </section>
+
+      <footer>
+        Audio from NASA via the Internet Archive. With music recommendations
+        from Erik Price, Glenn MacDonald, and Andrew Shires.
+      </footer>
+    </section>
 
     <section id="playlist-section" class="hidden"></section>
 
@@ -46,11 +68,5 @@
     <audio id="sound-player" class="hidden"></audio>
 
     <script src="index.js"></script>
-
-    <footer>
-      Audio from NASA via the Internet Archive.
-      With music recommendations from Erik Price, Glenn MacDonald, and Andrew Shires.
-    </footer>
-
   </body>
 </html>

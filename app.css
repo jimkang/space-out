@@ -1,15 +1,14 @@
 body {
   font-size: 24px;
   font-family: futura, sans-serif;
-  background-color: #fff;
-  color: #666;
-  margin-bottom: 2em;
-  /*! margin-left: 2em; */
-  /*! margin-right: 2em; */
+  background-color: hsl(0, 0%, 5%);
+  color: #fff;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   flex-direction: column;
+  margin: 0;
+  text-shadow: #333 1px 1px;
 }
 
 .dark {
@@ -46,18 +45,19 @@ p {
 
 button {
   text-transform: uppercase;
-  color: #444;
+  color: #fff;
   font-size: 0.8em;
   cursor: pointer;
-  background-color: white;
+  background-color: hsla(0, 0%, 20%, 0.5);
   padding: 0.5em;
   border-radius: 0.5em;
   border-width: 1px;
-  border-color: #aaa;
+  border-color: #fff;
   border-style: solid;
   font-family: futura;
   min-width: 44px;
   box-shadow: #444 0 0 4px;
+  width: 20em;
 }
 
 #orbit-paths path {
@@ -75,6 +75,55 @@ button {
 
 .light .click-target {
   stroke: hsla(0, 0%, 0%, 0.5);
+}
+
+#board {
+	position: absolute;
+	z-index: 1;
+}
+
+#foreground {
+	z-index: 2;
+	flex-wrap: wrap;
+	align-items: center;
+	flex-direction: column;
+	display: flex;
+}
+
+a:link {
+	color: #fff;
+}
+
+a:visited {
+	color: #ddd;
+}
+
+#controls-section {
+	display: flex;
+	flex-direction: column;
+	background-color: hsla(0, 0%, 0%, 0.5);
+	width: 80%;
+	padding: 1em;
+	border-radius: 0.5em;
+	align-items: center;
+}
+
+.currently-playing-info {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 1.5em;
+	align-items: center;
+}
+
+.currently-playing-label {
+	margin-bottom: 1em;
+}
+
+#version-info {
+  position: absolute;
+  right: 1.5em;
+  top: 1.5em;
+  font-size: 0.5em;
 }
 
 @media all and (max-height: 568px) {

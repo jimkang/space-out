@@ -10,13 +10,31 @@ squarifyBoard();
 const imageInterval = 20000; // 30000;
 const transitionDuration = 5000;
 
+var keywordTable = [
+  [1, 'Orion'],
+  [2, 'Telescope'],
+  [1, 'Galileo'],
+  [2, 'WISE'],
+  [3, 'Spitzer'],
+  [3, 'Hubble'],
+  [2, 'Jupiter'],
+  [1, 'Voyager'],
+  [1, 'Sun'],
+  [1, 'Nebula'],
+  [1, 'Herschel'],
+  [1, 'GALEX'],
+  [2, 'space']
+];
+
 var underImage = d3.select('#under-image');
 var overImage = d3.select('#over-image');
 
 async function scheduleSpaceImages({ probable }) {
+  var keyword = probable.createTableFromSizes(keywordTable).roll();
+
   var r = await easyR({
     method: 'GET',
-    url: 'https://images-api.nasa.gov/search?q=space&media_type=image',
+    url: `https://images-api.nasa.gov/search?q=&media_type=image&keywords=${keyword}`,
     json: true
   });
   if (r.error) {
