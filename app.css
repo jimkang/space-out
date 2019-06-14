@@ -12,13 +12,13 @@ body {
 }
 
 .main-title {
-	font-family: eurostile-extended, futura, sans-serify;
-	font-size: 2.5em;
-	margin-bottom: 0;
+  font-family: eurostile-extended, futura, sans-serify;
+  font-size: 2.5em;
+  margin-bottom: 0;
 }
 
 .subtitle {
-	font-family: eurostile-extended, futura, sans-serify;
+  font-family: eurostile-extended, futura, sans-serify;
 }
 
 p {
@@ -37,26 +37,26 @@ p {
 }
 
 #status-message {
-	background-color: hsla(0, 100%, 50%, 0.8);
-	margin: 1em;
-	padding: 1em;
-	text-shadow: none;
+  background-color: hsla(0, 100%, 50%, 0.8);
+  margin: 1em;
+  padding: 1em;
+  text-shadow: none;
 }
 
 footer {
-	font-size: 0.9em;
-	margin-top: 2em;
+  font-size: 0.9em;
+  margin-top: 2em;
 }
 
 ul {
-	list-style-type: square;
+  list-style-type: square;
 }
 
 button {
   text-transform: uppercase;
   color: #fff;
   font-size: 0.8em;
-	/*! font-weight: 700; */
+  /*! font-weight: 700; */
   cursor: pointer;
   background-color: hsla(0, 0%, 20%, 0.5);
   padding: 0.5em;
@@ -89,58 +89,58 @@ button {
 }
 
 #board {
-	position: absolute;
-	z-index: 1;
+  position: absolute;
+  z-index: 1;
 }
 
 #foreground {
-	z-index: 2;
-	flex-wrap: wrap;
-	align-items: center;
-	flex-direction: column;
-	display: flex;
+  z-index: 2;
+  flex-wrap: wrap;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
 }
 
 a:link {
-	color: #fff;
-	font-weight: 700;
+  color: #fff;
+  font-weight: 700;
 }
 
 a:visited {
-	color: #ddd;
+  color: #ddd;
 }
 
 #controls-section {
-	display: flex;
-	flex-direction: column;
-	background-color: hsla(0, 0%, 0%, 0.5);
-	width: 80%;
-	padding: 1em;
-	border-radius: 0.5em;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  background-color: hsla(0, 0%, 0%, 0.5);
+  width: 80%;
+  padding: 1em;
+  border-radius: 0.5em;
+  align-items: center;
 }
 
 .currently-playing-info {
-	display: flex;
-	flex-direction: column;
-	margin-bottom: 1.5em;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5em;
+  align-items: center;
 }
 
 .currently-playing-label {
-	margin-bottom: 1em;
+  margin-bottom: 1em;
 }
 
 #login-section {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #login-section .note {
-	margin-top: 2em;
-	width: 80%;
-	font-size: 0.8em;
+  margin-top: 2em;
+  width: 80%;
+  font-size: 0.8em;
 }
 
 #version-info {
@@ -151,8 +151,8 @@ a:visited {
 }
 
 #sound-player {
-	width: 100%;
-	margin-bottom: 0.5em;
+  width: 100%;
+  margin-bottom: 0.5em;
 }
 
 @media all and (max-height: 568px) {
