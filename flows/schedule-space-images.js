@@ -5,7 +5,7 @@ var squarifyBoard = require('../squarify-board');
 var d3 = require('d3-selection');
 require('d3-transition');
 
-const imageInterval = 20000; // 30000;
+const imageInterval = 30000;
 const transitionDuration = 5000;
 
 squarifyBoard();
