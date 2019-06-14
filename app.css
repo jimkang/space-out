@@ -1,6 +1,6 @@
 body {
   font-size: 24px;
-  font-family: futura, sans-serif;
+  font-family: eurostile, futura, sans-serif;
   background-color: hsl(0, 0%, 5%);
   color: #fff;
   display: flex;
@@ -11,16 +11,15 @@ body {
   text-shadow: #333 1px 1px;
 }
 
-.dark {
-  background-color: black;
-  transition: 3s background-color;
+.main-title {
+	font-family: eurostile-extended, futura, sans-serify;
+	font-size: 2.5em;
+	margin-bottom: 0;
 }
 
-.light {
-  background-color: white;
-  transition: 3s background-color;
+.subtitle {
+	font-family: eurostile-extended, futura, sans-serify;
 }
-
 
 p {
   margin-top: 0;
@@ -47,6 +46,7 @@ button {
   text-transform: uppercase;
   color: #fff;
   font-size: 0.8em;
+	/*! font-weight: 700; */
   cursor: pointer;
   background-color: hsla(0, 0%, 20%, 0.5);
   padding: 0.5em;
@@ -54,10 +54,11 @@ button {
   border-width: 1px;
   border-color: #fff;
   border-style: solid;
-  font-family: futura;
   min-width: 44px;
   box-shadow: #444 0 0 4px;
   width: 20em;
+  font-family: eurostile-extended;
+  letter-spacing: 2px;
 }
 
 #orbit-paths path {
@@ -92,6 +93,7 @@ button {
 
 a:link {
 	color: #fff;
+	font-weight: 700;
 }
 
 a:visited {
