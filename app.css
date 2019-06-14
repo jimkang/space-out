@@ -150,6 +150,11 @@ a:visited {
   font-size: 0.5em;
 }
 
+#sound-player {
+	width: 100%;
+	margin-bottom: 0.5em;
+}
+
 @media all and (max-height: 568px) {
   body {
     font-size: 18px;
