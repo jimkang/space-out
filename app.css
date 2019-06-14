@@ -37,9 +37,19 @@ p {
 }
 
 #status-message {
-  background-color: #ffffee;
-  margin: 1em;
-  padding: 1em;
+	background-color: hsla(0, 100%, 50%, 0.8);
+	margin: 1em;
+	padding: 1em;
+	text-shadow: none;
+}
+
+footer {
+	font-size: 0.9em;
+	margin-top: 2em;
+}
+
+ul {
+	list-style-type: square;
 }
 
 button {
