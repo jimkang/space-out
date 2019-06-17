@@ -31,7 +31,8 @@ var ambientCollections = [
   'spotify:album:6ROeoiTdZBO7N5C8gC2xix',
   'spotify:album:6NkuCdMz5tGmHbOXAWbtCW',
   'spotify:playlist:37i9dQZF1DXbIeCFU20wRm',
-  'spotify:album:2W82HHqCOm2ZCl7Er7VCSC'
+  'spotify:album:2W82HHqCOm2ZCl7Er7VCSC',
+  'spotify:album:6TSJFSLFSAAbBKd5pGKiXv'
 ];
 
 function scheduleMusic({ spotifyPlayer, spotifyToken, probable }) {
