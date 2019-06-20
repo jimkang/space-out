@@ -3,7 +3,6 @@ var getTracksFromPlaylist = require('../tasks/get-tracks-from-playlist');
 var getTracksFromAlbum = require('../tasks/get-tracks-from-album');
 var handleError = require('handle-error-web');
 var queue = require('d3-queue').queue;
-var registerSingleListener = require('../register-single-listener');
 var SpotifyResolve = require('spotify-resolve');
 var request = require('basic-browser-request');
 var sb = require('standard-bail')();
@@ -35,8 +34,8 @@ var ambientCollections = [
   'spotify:album:6TSJFSLFSAAbBKd5pGKiXv'
 ];
 
-function scheduleMusic({ spotifyPlayer, spotifyToken, probable }) {
-  registerSingleListener({
+function scheduleMusic({ spotifyPlayer, spotifyToken, probable, setListener }) {
+  setListener({
     element: nextSong,
     eventName: 'click',
     listener: playNext

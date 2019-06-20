@@ -9,7 +9,7 @@ var playFlow = require('./play-flow');
 
 const playerName = 'Space out web player';
 
-function spotifyTokenFlow(routeDict, routeState) {
+function spotifyTokenFlow(routeDict, routeState, setListener) {
   var { access_token, state, seed } = routeDict;
   var gotPlayerReadyEvent = false;
 
@@ -53,7 +53,8 @@ function spotifyTokenFlow(routeDict, routeState) {
       spotifyPlayer,
       spotifyToken: access_token,
       routeState,
-      firstAudioURL: routeDict.firstAudioURL
+      firstAudioURL: routeDict.firstAudioURL,
+      setListener
     });
   }
 }

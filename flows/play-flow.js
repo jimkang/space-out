@@ -3,7 +3,6 @@ var Probable = require('probable').createProbable;
 var scheduleMusic = require('./schedule-music');
 var scheduleSpaceAudio = require('./schedule-space-audio');
 var scheduleSpaceImages = require('./schedule-space-images');
-var registerSingleListener = require('../register-single-listener');
 var callNextTick = require('call-next-tick');
 
 var controlsSection = document.getElementById('controls-section');
@@ -17,17 +16,18 @@ function playFlow({
   spotifyPlayer,
   routeState,
   startPlaying,
-  firstAudioURL
+  firstAudioURL,
+  setListener
 }) {
   var random = seedrandom(seed);
   var probable = Probable({ random });
 
-  registerSingleListener({
+  setListener({
     element: startButton,
     eventName: 'click',
     listener: start
   });
-  registerSingleListener({
+  setListener({
     element: restartButton,
     eventName: 'click',
     listener: restart
@@ -43,9 +43,9 @@ function playFlow({
     restartButton.classList.remove('hidden');
 
     if (spotifyPlayer) {
-      scheduleMusic({ probable, spotifyPlayer, spotifyToken });
+      scheduleMusic({ probable, spotifyPlayer, spotifyToken, setListener });
     }
-    scheduleSpaceAudio({ random, firstAudioURL });
+    scheduleSpaceAudio({ random, firstAudioURL, setListener });
     scheduleSpaceImages({ probable });
     startButton.classList.add('hidden');
   }
@@ -59,7 +59,8 @@ function playFlow({
       spotifyToken,
       spotifyPlayer,
       routeState,
-      startPlaying: true
+      startPlaying: true,
+      setListener
     });
   }
 }

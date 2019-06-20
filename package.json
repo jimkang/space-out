@@ -39,6 +39,7 @@
     "handle-error-web": "^1.0.1",
     "lodash.curry": "^4.1.1",
     "lodash.pluck": "^3.1.2",
+    "one-listener-per-element": "^1.0.0",
     "probable": "^2.1.4",
     "random-internet-archive": "^3.0.2",
     "request-body-mover": "^1.0.1",

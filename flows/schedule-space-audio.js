@@ -1,7 +1,6 @@
 var randomIA = require('random-internet-archive');
 var handleError = require('handle-error-web');
 var request = require('basic-browser-request');
-var registerSingleListener = require('../register-single-listener');
 var sb = require('standard-bail')();
 
 var soundPlayer = document.getElementById('sound-player');
@@ -11,16 +10,16 @@ var currentlyPlayingSection = document.getElementById(
   'currently-playing-sound'
 );
 
-function scheduleSpaceAudio({ random, firstAudioURL }) {
+function scheduleSpaceAudio({ random, firstAudioURL, setListener }) {
   // This is important, as the sound can't change unless things are stopped.
   soundPlayer.pause();
 
-  registerSingleListener({
+  setListener({
     element: soundPlayer,
     eventName: 'ended',
     listener: playNextIfPossible
   });
-  registerSingleListener({
+  setListener({
     element: nextSound,
     eventName: 'click',
     listener: playNext

@@ -4,6 +4,9 @@ var { version } = require('./package.json');
 var spotifyTokenFlow = require('./flows/spotify-token-flow');
 var playFlow = require('./flows/play-flow');
 var askToLoginFlow = require('./flows/ask-to-log-in-flow');
+var OLPE = require('one-listener-per-element');
+
+var { setListener } = OLPE();
 
 var routeState = RouteState({
   followRoute,
@@ -23,12 +26,12 @@ function followRoute(routeDict) {
     return;
   }
   if (!skipMusic && (access_token || state)) {
-    spotifyTokenFlow(routeDict, routeState);
+    spotifyTokenFlow(routeDict, routeState, setListener);
     return;
   } else if (skipMusic === 'yes') {
-    playFlow({ seed, routeState, firstAudioURL });
+    playFlow({ seed, routeState, firstAudioURL, setListener });
   } else {
-    askToLoginFlow({ routeState, routeDict });
+    askToLoginFlow({ routeState, routeDict, setListener });
   }
 }
 
