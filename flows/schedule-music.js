@@ -33,7 +33,10 @@ var ambientCollections = [
   'spotify:album:2W82HHqCOm2ZCl7Er7VCSC',
   'spotify:album:6TSJFSLFSAAbBKd5pGKiXv',
   'spotify:album:4Pj4zPHuEUPtfacdeTlqUG',
-  'spotify:playlist:37i9dQZF1DX8C585qnMYHP'
+  'spotify:playlist:37i9dQZF1DX8C585qnMYHP',
+  'spotify:album:2Takb3WbmLXRVvXiFfnjnk', // Com Truise: Persuasion System
+  'spotify:playlist:37i9dQZF1DZ06evO0QK6zK', // This Is Fumio Miyashita
+  'spotify:album:0hWjBUtA4eoFsyh6lygVRN' // Harold Budd: The Pavillion of Dreams, via Toby
 ];
 
 function scheduleMusic({ spotifyPlayer, spotifyToken, probable, setListener }) {
